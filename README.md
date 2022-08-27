@@ -45,7 +45,8 @@ You can reach the application at URL/docs, in this case: http://127.0.0.1:50783/
 
 Make sure to update the environment variables in **mealsapp/config.py**, before starting up the project.  
 You need to create the databases before you can connect.  
-Make sure to install software requirements above, and I suggest using PyCharm Professional.
+Make sure to install software requirements above, and I suggest using PyCharm Professional:
+- PyCharm Professional (https://www.jetbrains.com/pycharm/)
 
 I used helm, to install a postgres db on the minikube:
 - helm repo add bitnami https://charts.bitnami.com/bitnami
@@ -66,7 +67,7 @@ After this, you can run the app from PyCharm, and can reach the app on http://12
 You can run all unittests by choosing Run -> Run... -> Pytest  
 Or individually by clicking the green arrow next to the methods in the tests package.
 
-## Updating the app
+## Updating Docker Image
 
 After local testing, rebuild docker image:
  - docker build -t andrewhorvath8/fastapimeals .  
