@@ -1,0 +1,52 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mealsapp-deployment
+  namespace: fastapimeals-namespace
+  labels:
+    app: mealsapp
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mealsapp-app
+  template:
+    metadata:
+      labels:
+        app: mealsapp-app
+    spec:
+      initContainers:
+        - name: init-postgres-service
+          image: postgres:14.5
+          command: ['sh', '-c',
+          'until pg_isready -h postgres-service.$(cat /var/run/secrets/kubernetes.io/serviceaccount/namespace).svc.cluster.local -p 5432;
+          do echo waiting for database; sleep 2; done;']
+
+      containers:
+        - image: andrewhorvath8/fastapimeals:latest
+          imagePullPolicy: Always
+          name: sample-container
+          envFrom:
+          - secretRef:
+              name: mealsapp-secret
+          ports:
+            - containerPort: 5000
+              name: fastapi
+          readinessProbe:
+            httpGet:
+              port: 5000
+              path: /docs
+            initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              port: 5000
+              path: /docs
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          resources:
+            requests:
+              memory: "512Mi"
+              cpu: "0.5"
+            limits:
+              memory: "1Gi"
+              cpu: "1"

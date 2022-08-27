@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment-{{ include "fastapimeals-helm.fullname" . }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+    app: mealsapp
+    version: {{ .Chart.AppVersion}}
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mealsapp-nginx
+  template:
+    metadata:
+      labels:
+        app: mealsapp-nginx
+    spec:
+      containers:
+        - image: "{{ .Values.nginxImage.repository }}:{{ .Values.nginxImage.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.nginxImage.pullPolicy }}
+          name: nginx-container
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              port: 80
+              path: /docs
+            initialDelaySeconds: 15
+          livenessProbe:
+            httpGet:
+              port: 80
+              path: /docs
+            initialDelaySeconds: 15
+            periodSeconds: 15
+          volumeMounts:
+            - name: nginx-config
+              mountPath: /etc/nginx/conf.d/default.conf
+              subPath: default.conf
+      volumes:
+        - name: nginx-config
+          configMap:
+            name: nginx-config-{{ include "fastapimeals-helm.fullname" . }}
