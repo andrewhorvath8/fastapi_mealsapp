@@ -3,18 +3,26 @@
 This app was developed in PyCharm Professional running on Windows 10 Pro.  
 Therefore, I will list requirements, testing method, and installation on this system.
 
+### System Requirements
+
+Enable Hyper-V
+ - dism.exe /Online /Enable-Feature:Microsoft-Hyper-V /All
+ - bcdedit /set hypervisorlaunchtype auto  
+
+Enable SVM in BIOS. (System dependent)
+
 ### Software Requirements Installation
 
-- [x] [Docker - Docker Desktop](https://www.docker.com/products/docker-desktop/)
+- [Docker - Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
 
-- [x] [Kubernetes - Minikube](https://minikube.sigs.k8s.io/docs/start/)
+- [Kubernetes - Minikube](https://minikube.sigs.k8s.io/docs/start/)
 
 
-- [x] [Helm](https://helm.sh/)
+- [Helm](https://helm.sh/)
 
 
-- [x] [PostgreSQL](https://www.postgresql.org/)
+- [PostgreSQL](https://www.postgresql.org/)
 
 ### App installation
 
