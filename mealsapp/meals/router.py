@@ -1,4 +1,4 @@
-from fastapi import APIRouter, Depends, status, Response, HTTPException
+from fastapi import APIRouter, Depends, status, Response
 from sqlalchemy.orm import Session
 from mealsapp import db
 from typing import List

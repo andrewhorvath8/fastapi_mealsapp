@@ -34,14 +34,50 @@ curl -X 'POST' \
   -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
   -H 'Content-Type: application/json' \
   -d '{
-  "name": "string",
-  "price": 0,
-  "ingredients": "string",
-  "spicy": true,
+  "name": "Singapore Noodles",
+  "price": 20,
+  "ingredients": "4-6 ounces rice noodles, 2 Tbsp toasted sesame oil, 1/2 medium yellow onion, 12 whole snow peas, 3/4 medium red bell pepper, 1 Tbsp tamari, 2 tsp curry powder, 8 ounces extra-firm tofu",
+  "spicy": false,
   "vegan": true,
   "gluten_free": true,
-  "description": "string",
-  "kcal": 0,
+  "description": "Simplified plant-based Singapore noodles with tofu.",
+  "kcal": 401,
+  "image": "string"
+}'
+
+
+curl -X 'POST' \
+  'http://127.0.0.1:55629/meals/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Chickpea Spinach Curry",
+  "price": 12.30,
+  "ingredients": "2 Tbsp olive oil, 1 yellow onion, 2 garlic cloves, 1 inch fresh ginger, 1 1/2 Tbsp curry powder, 8 ounces spinach, 1 15 ounces can tomato sauce, 2 15 ounces cans chickpeas",
+  "spicy": false,
+  "vegan": true,
+  "gluten_free": true,
+  "description": "Vegan curried chickpeas with spinach.",
+  "kcal": 322,
+  "image": "string"
+}'
+
+
+curl -X 'POST' \
+  'http://127.0.0.1:55629/meals/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "One Pot Penne Pasta",
+  "price": 15.30,
+  "ingredients": "6 ounces penne pasta, 1½ cups cherry tomatoes, 1½ cups sliced leeks, 1 medium zucchini, 1 red bell pepper, 3 small garlic cloves, 2 Tbsp extra-virgin olive oil, 2 Tbsp lemon juice, 1 tsp dried oregano, 1 tsp sea salt, 2 cups water, grated parmesan cheese",
+  "spicy": false,
+  "vegan": false,
+  "gluten_free": false,
+  "description": "Vegetables cooked in one pot with penne pasta.",
+  "kcal": 420,
   "image": "string"
 }'
 
