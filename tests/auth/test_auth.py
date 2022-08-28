@@ -17,10 +17,7 @@ async def test_login():
 
         database.add(new_user)
         database.commit()
-
-        print("\n\n\nAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA\n")
-        mod_user = database.query(User).get(new_user.id)
-        print(f"{mod_user.name}\n\n")
+        database.refresh(new_user)
 
         response = await ac.post("/login", data={"username": "test_login_user@test.com", "password": "123"})
 
