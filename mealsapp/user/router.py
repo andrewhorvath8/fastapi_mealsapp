@@ -19,7 +19,7 @@ async def create_user_registration(request: schema.User, database: Session = Dep
     return await services.new_user_register(request, database)
 
 
-# List all users
+# Get all users
 @router.get('/', response_model=List[schema.DisplayUser])
 async def get_all_users(database: Session = Depends(db.get_db),
                         current_user: schema.User = Depends(get_current_user)):

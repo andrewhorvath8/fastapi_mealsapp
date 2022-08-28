@@ -1,0 +1,122 @@
+Some sample CURL calls:
+
+Create user:
+
+curl -X 'POST' \
+  'http://127.0.0.1:55629/user/' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Andras",
+  "email": "andras@mealsapp.com",
+  "password": "123"
+}'
+
+Login with user and get token (replace username and password with own):
+
+curl -X 'POST' \
+  'http://127.0.0.1:55629/login' \
+  -H 'accept: application/json' \
+  -H 'Content-Type: application/x-www-form-urlencoded' \
+  -d 'grant_type=&username=andras%40mealsapp.com&password=123&scope=&client_id=&client_secret='
+  
+
+ 
+Keep token, and replace the text after Bearer with your own token in each curl calls below.
+
+
+
+Create a meal:
+
+curl -X 'POST' \
+  'http://127.0.0.1:55629/meals/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "string",
+  "price": 0,
+  "ingredients": "string",
+  "spicy": true,
+  "vegan": true,
+  "gluten_free": true,
+  "description": "string",
+  "kcal": 0,
+  "image": "string"
+}'
+
+
+Get all meals:
+
+curl -X 'GET' \
+  'http://127.0.0.1:55629/meals/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g'
+
+  
+Update meal by ID (every field must have a valid value):
+
+curl -X 'PUT' \
+  'http://127.0.0.1:55629/meals/4' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "string2",
+  "price": 0,
+  "ingredients": "string",
+  "spicy": true,
+  "vegan": true,
+  "gluten_free": true,
+  "description": "string",
+  "kcal": 0,
+  "image": "string"
+}'
+
+  
+Delete meal by ID:
+
+curl -X 'DELETE' \
+  'http://127.0.0.1:55629/meals/5' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g'
+  
+
+
+Get all users:
+
+curl -X 'GET' \
+  'http://127.0.0.1:55629/user/' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g'
+
+  
+Get user by ID:
+
+curl -X 'GET' \
+  'http://127.0.0.1:55629/user/1' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g'
+
+  
+Update user by ID (you can replace either name or email or both):
+
+curl -X 'PUT' \
+  'http://127.0.0.1:55629/user/4' \
+  -H 'accept: application/json' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g' \
+  -H 'Content-Type: application/json' \
+  -d '{
+  "name": "Andras2",
+  "email": "andras@mealsapp.com"
+}'
+
+  
+Delete user by ID:
+
+curl -X 'DELETE' \
+  'http://127.0.0.1:55629/user/3' \
+  -H 'accept: */*' \
+  -H 'Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJhbmRyYXNAbWVhbHNhcHAuY29tIiwiZXhwIjoxNjYxNjc2NDA0fQ.-dv1hlJ9CaXYiMAM2BSGLGRoa4gotIYexbdBKn3cW6g'
+  
+

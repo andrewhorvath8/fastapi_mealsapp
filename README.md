@@ -44,7 +44,9 @@ minikube service nginx-service-myapp-fastapimeals-helm --url -n fastapimeals-nam
 Keep this terminal open.  
 This port forwarding is needed because using Docker Desktop with Minikube.  
 You will get an URL similar to: http://127.0.0.1:50783  
-You can reach the application at URL/docs, in this case: http://127.0.0.1:50783/docs
+You can reach the application at URL/docs, in this case: http://127.0.0.1:50783/docs  
+
+You can also find some sample curl calls in sample_curl_calls.txt.
 
 ### App uninstallation
 
@@ -88,6 +90,15 @@ Install Python Packages from the python environment you use:
 
 ```Shell
 pip install -r requirements.txt
+```
+
+#### Create objects in db
+
+Delete versions folder from under alembic.
+
+```Shell
+alembic revision --autogenerate
+alembic upgrade head
 ```
 
 After this, you can run the app from PyCharm, and can reach the app on http://127.0.0.1:8000/docs  

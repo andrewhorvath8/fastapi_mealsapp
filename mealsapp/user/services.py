@@ -20,7 +20,7 @@ async def new_user_register(request, database) -> models.User:
     return new_user
 
 
-# List all users
+# Get all users
 async def list_all_users(database) -> List[models.User]:
     users = database.query(models.User).all()
     return users
