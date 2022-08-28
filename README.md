@@ -94,7 +94,7 @@ pip install -r requirements.txt
 
 #### Create objects in db
 
-Delete the contents of alembic/versions folder but keep the folder.
+Delete the contents of alembic/versions folder but keep the folder, then:
 
 ```Shell
 alembic revision --autogenerate
