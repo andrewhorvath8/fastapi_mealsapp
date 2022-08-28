@@ -1,10 +1,5 @@
-from fastapi import APIRouter, Depends, status, Response
-from sqlalchemy.orm import Session
+from fastapi import APIRouter
 from mealsapp import db
-from typing import List
-
-from mealsapp.auth.jwt import get_current_user
-from mealsapp.user import schema as userschema
 
 from . import services
 

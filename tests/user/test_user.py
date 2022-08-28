@@ -9,7 +9,7 @@ from mealsapp.user.models import User
 @pytest.mark.asyncio
 async def test_get_all_users():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         response = await ac.get("/user/", headers={'Authorization': f'Bearer {user_access_token}'})
     assert response.status_code == 200
 
@@ -17,7 +17,7 @@ async def test_get_all_users():
 @pytest.mark.asyncio
 async def test_update_user_by_id():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
 
         database = next(override_get_db())
         new_user = User(
@@ -51,7 +51,7 @@ async def test_update_user_by_id():
 @pytest.mark.asyncio
 async def test_delete_user_by_id():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
 
         database = next(override_get_db())
         new_user = User(

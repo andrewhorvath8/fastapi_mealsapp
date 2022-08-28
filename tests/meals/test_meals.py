@@ -1,6 +1,5 @@
 import pytest
 from httpx import AsyncClient
-from sqlalchemy.orm.exc import ObjectDeletedError
 
 from mealsapp.auth.jwt import create_access_token
 from mealsapp.meals.models import Meals
@@ -11,7 +10,7 @@ from conf_test_db import app, override_get_db
 @pytest.mark.asyncio
 async def test_new_meal():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         database = next(override_get_db())
         payload = {
             "name": "test_new_meal",
@@ -54,7 +53,7 @@ async def test_new_meal():
 @pytest.mark.asyncio
 async def test_list_all_meal():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         response = await ac.get("/meals/", headers={'Authorization': f'Bearer {user_access_token}'})
     assert response.status_code == 200
     assert 'name' in response.json()[0]
@@ -72,7 +71,7 @@ async def test_list_all_meal():
 @pytest.mark.asyncio
 async def test_get_meal_by_id():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         database = next(override_get_db())
         new_meal = Meals(
             name="test_meal",
@@ -118,7 +117,7 @@ async def test_get_meal_by_id():
 @pytest.mark.asyncio
 async def test_update_meal_by_id():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         database = next(override_get_db())
         new_meal = Meals(
             name="test_meal",
@@ -178,7 +177,7 @@ async def test_update_meal_by_id():
 @pytest.mark.asyncio
 async def test_delete_meal_by_id():
     async with AsyncClient(app=app, base_url="http://test") as ac:
-        user_access_token = create_access_token({"sub": "TestUser@testuser.com"})
+        user_access_token = create_access_token({"sub": "test_login_user@test.com"})
         database = next(override_get_db())
         new_meal = Meals(
             name="deleted_meal_by_id",

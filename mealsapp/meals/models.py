@@ -1,5 +1,4 @@
 from sqlalchemy import Column, Integer, String, Numeric, Text, Boolean, LargeBinary
-from sqlalchemy.orm import relationship
 from mealsapp.db import Base
 
 
