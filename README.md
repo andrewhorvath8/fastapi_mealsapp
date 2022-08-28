@@ -43,8 +43,8 @@ minikube service nginx-service-myapp-fastapimeals-helm --url -n fastapimeals-nam
 
 Keep this terminal open.  
 This port forwarding is needed because using Docker Desktop with Minikube.  
-You will get an URL similar to: http://127.0.0.1:50783  
-You can reach the application at URL/docs, in this case: http://127.0.0.1:50783/docs  
+You will get a URL similar to: http://127.0.0.1:50783  
+You can reach the application there. You can reach Swagger docs at URL/docs, where you can test features.
 
 You can also find some sample curl calls in sample_curl_calls.txt.
 
