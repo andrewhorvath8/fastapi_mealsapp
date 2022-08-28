@@ -9,8 +9,6 @@ from mealsapp.user import schema as userschema
 from . import schema
 from . import services
 
-# from . import validator
-
 router = APIRouter(
     tags=['Meals'],
     prefix='/meals'
